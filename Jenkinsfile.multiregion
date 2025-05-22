@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "gcr.io/river-chocolate-414923/go-hello-world"
+        IMAGE_TAG = "latest"
+        PROJECT_ID= "river-chocolate-414923"
+    }
+
+    stages {     
+       stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline finalizado in another region"
+        }
+    }
+}
